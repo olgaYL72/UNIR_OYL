@@ -1,0 +1,19 @@
+<assembly>
+	<id>ficheros_estaticos</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<fileSets>
+	 <fileSet><!--src con los fuentes -->
+		<directory>src/main/ficheros_configuracion</directory>
+		<outputDirectory>/</outputDirectory>
+		<includes>
+		  <include>static/css/**/*</include>
+		  <include>static/img/**/*</include>
+		<!--   <include>static/js/**/*</include> -->
+	 	</includes>
+	 </fileSet>
+	</fileSets>
+</assembly>
+

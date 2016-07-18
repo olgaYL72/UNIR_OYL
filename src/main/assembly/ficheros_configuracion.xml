@@ -1,0 +1,75 @@
+<assembly>
+	<id>${project.version}</id>
+	<formats>
+		<!-- Formato del archivo generado -->
+		<format>zip</format>
+	</formats>
+	<fileSets>
+	 	<fileSet> 
+	 	<!-- Directorio del proyecto donde se encuentran los properties de conf. de aplicacion -->
+	     <directory>src/main/ficheros_configuracion/aplicacion</directory> 
+	    <!-- Directorio del zip donde dejara los properties de conf. de aplicacion -->
+		 <outputDirectory>configuracion_aplicacion</outputDirectory>
+		<includes>
+		  <!-- Archivos a incluir en el zip -->
+		   <include>**.properties</include>
+		</includes>
+	 </fileSet>
+	  
+	<fileSet> 
+	     <!-- Directorio del proyecto donde se encuentran la configuracion conexion BBDD -->         
+         <directory>src/main/ficheros_configuracion/conf_jboss</directory>
+          <!-- Directorio del zip donde dejara los reports compilados de la aplicacion -->
+            <outputDirectory>conf_mysql</outputDirectory>
+           <includes>
+              <!-- Archivos a incluir en el zip -->
+              <include>**.xml</include>            
+            </includes>
+	  </fileSet>
+
+	<fileSet> 
+	     <!-- Directorio del proyecto donde se encuentran el descriptor del servicio INVENES -->         
+         <directory>src/main/ficheros_configuracion/wsdl</directory>
+          <!-- Directorio del zip donde dejara los reports compilados de la aplicacion -->
+            <outputDirectory>servicioINVENES</outputDirectory>
+           <includes>
+              <!-- Archivos a incluir en el zip -->
+              <include>**.**l</include>            
+            </includes>
+	  </fileSet>
+	  
+	  <fileSet> 
+	     <!-- Directorio del proyecto donde se encuentran los report compilados -->         
+         <directory>src/main/jasperreports</directory>
+          <!-- Directorio del zip donde dejara los reports compilados de la aplicacion -->
+            <outputDirectory>reports</outputDirectory>
+           <includes>
+              <!-- Archivos a incluir en el zip -->
+              <include>**.jasper</include>            
+            </includes>
+	  </fileSet>
+	  
+	 <fileSet>
+	 	<!-- Directorio del proyecto donde se encuentra el war de despliegue -->
+	    <directory>target</directory>
+	    <!-- Directorio del zip donde dejara el war de despliegue -->
+		<outputDirectory></outputDirectory>
+		<includes>
+		  <!-- Archivos a incluir en el zip -->
+		  <include>**.war</include>
+		</includes>
+	 </fileSet>
+
+	 <fileSet>
+	 	<!-- Directorio del proyecto donde se encuentra el tar que contiene los recursos estaticos de la aplicacion -->
+	    <directory>target</directory>
+	    <!-- Directorio del zip donde dejara el tar que contiene los recursos estaticos de la aplicacion -->
+		<outputDirectory>elementos_estaticos</outputDirectory>
+		<includes>
+		  <!-- Archivos a incluir en el zip -->
+		  <include>*-ficheros_estaticos.zip</include>
+		</includes>
+	 </fileSet>	 
+	 
+	</fileSets>
+</assembly>

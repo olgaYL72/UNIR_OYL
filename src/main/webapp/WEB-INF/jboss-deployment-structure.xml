@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <deployment>
+    <exclusions>
+       
+<!--   <module name="org.apache.cxf" />
+   <module name="org.apache.neethi" /> 
+   <module name="javax.wsdl4j.api" />
+   <module name="org.apache.ws.security" />
+   <module name="org.apache.ws.xmlschema" />   
+      <module name="org.apache.log4j" />
+      <module name="org.apache.commons.logging" />
+      <module name="org.slf4j"/> -->
+      <!-- <module name="org.jboss.logging" /> -->
+      <!-- <module name="org.jboss.logmanager" /> -->
+      <!-- <module name="org.jboss.log4j.logmanager" /> -->
+      
+    </exclusions>
+    <dependencies>
+      <module name="org.hibernate" export="true" />
+    </dependencies>
+    
+  <!--   <sub-deployment name="myapp-1.0.0-SNAPSHOT.war">
+ <exclusions>
+   <module name="org.apache.cxf" />
+   <module name="org.apache.neethi" />
+   <module name="javax.wsdl4j.api" />
+   <module name="org.apache.ws.security" />
+   <module name="org.apache.ws.xmlschema" />                
+ </exclusions>
+</sub-deployment>
+-->
+  </deployment>
+</jboss-deployment-structure>

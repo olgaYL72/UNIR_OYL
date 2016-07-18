@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+		default-autowire="byName">
+
+	<tx:annotation-driven />
+
+	<!-- Scans within the base package of the application for @Components to configure as beans -->
+<!-- 	<context:component-scan base-package="es.invenesWEB" /> -->
+
+	<!-- Drives transactions using local JPA APIs -->	    
+    <bean  class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+
+      <!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean"> -->   
+   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+     <property name="persistenceXmlLocation" value="classpath*:META-INF/jpa-persistence.xml"/>
+    <property name="dataSource" ref="dataSource"/>
+    <property name="jpaVendorAdapter">
+        <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+            <property name="showSql" value="false"/>         
+            <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
+        </bean>
+    </property>
+</bean>
+      <!-- <property name="generateDdl" value="true"/> -->
+
+    
+    <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="java:/invenesWEBDS" />        
+        <property name="resourceRef" value="true" /> 
+    </bean>
+ 	
+
+ 	 <!--  	Configuracion del bean dataSource dentro del código --> 
+ 	 <!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 		<property name="driver-class" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/invenes" />
+		<property name="username" value="TFG_invenes" />
+		<property name="password" value="INVENES" />
+ 	</bean> 
+ 	 -->
+		
+    <bean id="transactionManager"       class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+ 	
+</beans>

@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd" version="1.0">
+  <description>Modelo para invenesWEB</description>
+  <package>es.invenesWEB.model</package>
+
+   <!--  Tablas maestras para búsquedas  con valores obtenidos a través del servicio de invenes -->
+   
+   <entity class="es.invenesWEB.model.InvenesBase" name="invenesBase">
+    <table name="invenes_bases" />
+    <attributes>
+      <id name="idBase" />
+      <basic name="idBase" optional="false">
+        <column name="id_base" />
+      </basic>
+      <basic name="descripcionBase" optional="false">
+        <column name="DESC_BASE" />
+      </basic>
+      <basic name="usuCreacion" optional="true">
+        <column name="usu_creacion" />
+      </basic>
+        <basic name="fechaCreacion" optional="true">
+        <column name="fc_creacion" />
+      </basic>
+      <basic name="usuModificacion" optional="true">
+        <column name="usu_modificacion" />
+      </basic>
+        <basic name="fechaModificacion" optional="true">
+        <column name="fc_modificacion" />
+      </basic>
+    </attributes>
+ </entity>
+  
+<entity class="es.invenesWEB.model.InvenesCampo" name="invenesCampo">
+    <table name="invenes_campos" />
+    <attributes>   
+      <id name="id" />    
+       <basic name="id" optional="false">
+                <column name="ID" />
+       </basic>
+      <basic name="idCampo" optional="false">
+        <column name="id_campo" />
+      </basic>      
+      <basic name="idBase" optional="false">
+        <column name="id_base" />
+      </basic>       
+      <basic name="descripcionCampo" optional="false">
+        <column name="desc_campo" />
+      </basic>
+      <basic name="flagBusqueda" optional="false">
+        <column name="fl_busqueda" />
+      </basic>
+     <basic name="usuCreacion" optional="true">
+        <column name="usu_creacion" />
+      </basic>
+        <basic name="fechaCreacion" optional="true">
+        <column name="fc_creacion" />
+      </basic>
+      <basic name="usuModificacion" optional="true">
+        <column name="usu_modificacion" />
+      </basic>
+        <basic name="fechaModificacion" optional="true">
+        <column name="fc_modificacion" />
+      </basic>
+      
+      <many-to-one name="invenesBase">
+        <join-column name="id_base" insertable="false" updatable="false" />
+      </many-to-one>
+    </attributes>
+ </entity>
+     
+   <entity class="es.invenesWEB.model.InvenesCampoValor" name="invenesCampoValor">
+    <table name="invenes_campos_valores" />
+    <attributes>
+      <id name="row" />
+      <basic name="row">
+        <column name="rownum" />
+      </basic>
+      <basic name="idBase" optional="false">
+        <column name="id_base" />
+      </basic>
+      <basic name="idCampo" optional="false">
+        <column name="id_campo" />
+      </basic>
+      <basic name="idValor" optional="false">
+        <column name="id_valor" />
+      </basic>
+      <basic name="descripcionCampo" optional="false">
+        <column name="DESC_CAMPO" />
+      </basic>
+     <basic name="usuCreacion" optional="true">
+        <column name="usu_creacion" />
+      </basic>
+        <basic name="fechaCreacion" optional="true">
+        <column name="fc_creacion" />
+      </basic>
+      <basic name="usuModificacion" optional="true">
+        <column name="usu_modificacion" />
+      </basic>
+        <basic name="fechaModificacion" optional="true">
+        <column name="fc_modificacion" />
+      </basic>
+      
+       <many-to-one name="invenesBase">
+        <join-column name="id_base" insertable="false" updatable="false" />
+      </many-to-one>
+      <many-to-one name="invenesCampo">
+        <join-column name="id_campo" insertable="false" updatable="false" />
+      </many-to-one>
+      
+    </attributes>
+    
+ </entity>
+  
+ <!--   Tablas maestras con la Clasificación Internacional de Patentes -->
+  
+   <entity class="es.invenesWEB.model.CIPSeccion" name="CIPSeccion">
+    <table name="cip_secciones" />
+    <attributes>
+     <id name="idSeccion" />       
+      <basic name="idSeccion" optional="false">
+        <column name="id_seccion" />
+      </basic>        
+      <basic name="descripcionSeccion" optional="false">
+        <column name="desc_seccion" />
+      </basic>
+     <basic name="usuCreacion" optional="true">
+        <column name="usu_creacion" />
+      </basic>
+        <basic name="fechaCreacion" optional="true">
+        <column name="fc_creacion" />
+      </basic>
+      <basic name="usuModificacion" optional="true">
+        <column name="usu_modificacion" />
+      </basic>
+        <basic name="fechaModificacion" optional="true">
+        <column name="fc_modificacion" />
+      </basic>      
+         </attributes>
+ </entity>
+  
+  <entity class="es.invenesWEB.model.CIPArea" name="CIPArea">
+    <table name="cip_area" />
+    <attributes>
+
+     <id name="idArea" />
+      <basic name="idSeccion" optional="false">
+        <column name="id_Seccion" />
+      </basic>      
+      <basic name="idArea" optional="false">
+        <column name="id_Area" />
+      </basic>       
+      <basic name="descripcionArea" optional="false">
+        <column name="desc_area" />
+      </basic>
+     <basic name="usuCreacion" optional="true">
+        <column name="usu_creacion" />
+      </basic>
+        <basic name="fechaCreacion" optional="true">
+        <column name="fc_creacion" />
+      </basic>
+      <basic name="usuModificacion" optional="true">
+        <column name="usu_modificacion" />
+      </basic>
+        <basic name="fechaModificacion" optional="true">
+        <column name="fc_modificacion" />
+      </basic>
+      
+      <many-to-one name="CIPSeccion">
+        <join-column name="id_seccion" insertable="false" updatable="false" />
+      </many-to-one>
+    </attributes>
+ </entity>
+  
+  <entity class="es.invenesWEB.model.CIPClase" name="CIPClase">
+    <table name="cip_clases" />
+    <attributes>
+     <id name="idClase" />       
+      <basic name="idClase" optional="false">
+        <column name="id_clase" />
+      </basic>
+        <basic name="idArea" optional="false">
+        <column name="id_area" />
+      </basic>      
+       <basic name="descripcionClase" optional="false">
+        <column name="desc_clase" />
+      </basic>
+      <basic name="descripcionClaseLarga" optional="false">
+        <column name="desc_clase_larga" />
+      </basic>
+     <basic name="usuCreacion" optional="true">
+        <column name="usu_creacion" />
+      </basic>
+        <basic name="fechaCreacion" optional="true">
+        <column name="fc_creacion" />
+      </basic>
+      <basic name="usuModificacion" optional="true">
+        <column name="usu_modificacion" />
+      </basic>
+        <basic name="fechaModificacion" optional="true">
+        <column name="fc_modificacion" />
+      </basic>
+      
+      <many-to-one name="CIPArea">
+        <join-column name="id_area" insertable="false" updatable="false" />
+      </many-to-one>
+    </attributes>
+ </entity> 
+ 
+  <entity class="es.invenesWEB.model.CIPSubClase" name="CIPSubClase">
+    <table name="cip_subclases" />
+    <attributes>
+     <id name="idSubclase" />       
+      <basic name="idSubclase" optional="false">
+        <column name="id_subclase" />
+      </basic>
+        <basic name="idClase" optional="false">
+        <column name="id_clase" />
+      </basic>      
+       <basic name="descripcionSubclase" optional="false">
+        <column name="desc_subclase" />
+      </basic>
+      <basic name="descripcionSubclaseLarga" optional="false">
+        <column name="desc_subclase_larga" />
+      </basic>
+     <basic name="usuCreacion" optional="true">
+        <column name="usu_creacion" />
+      </basic>
+        <basic name="fechaCreacion" optional="true">
+        <column name="fc_creacion" />
+      </basic>
+      <basic name="usuModificacion" optional="true">
+        <column name="usu_modificacion" />
+      </basic>
+        <basic name="fechaModificacion" optional="true">
+        <column name="fc_modificacion" />
+      </basic>
+      
+      <many-to-one name="CIPClase">
+        <join-column name="id_clase" insertable="false" updatable="false" />
+      </many-to-one>      
+    </attributes>
+ </entity> 
+  
+</entity-mappings>

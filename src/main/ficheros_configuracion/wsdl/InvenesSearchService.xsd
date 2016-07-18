@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Published by JAX-WS RI at http://jax-ws.dev.java.net. RI's version is JAX-WS RI 2.2.8 svn-revision#13980.-->
+<xs:schema version="1.0" targetNamespace="http://ws.invenes.oracle.es/" xmlns:tns="http://ws.invenes.oracle.es/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="InvenesWebException" type="tns:InvenesWebException"/>
+   <xs:element name="SesionExpiradaException" type="tns:SesionExpiradaException"/>
+   <xs:element name="doLogin" type="tns:doLogin"/>
+   <xs:element name="doLoginResponse" type="tns:doLoginResponse"/>
+   <xs:element name="doSearch" type="tns:doSearch"/>
+   <xs:element name="doSearchResponse" type="tns:doSearchResponse"/>
+   <xs:element name="getAllTypes" type="tns:getAllTypes"/>
+   <xs:element name="getAllTypesResponse" type="tns:getAllTypesResponse"/>
+   <xs:element name="getBases" type="tns:getBases"/>
+   <xs:element name="getBasesResponse" type="tns:getBasesResponse"/>
+   <xs:element name="getClaims" type="tns:getClaims"/>
+   <xs:element name="getClaimsResponse" type="tns:getClaimsResponse"/>
+   <xs:element name="getDesc" type="tns:getDesc"/>
+   <xs:element name="getDescResponse" type="tns:getDescResponse"/>
+   <xs:element name="getImages" type="tns:getImages"/>
+   <xs:element name="getImagesResponse" type="tns:getImagesResponse"/>
+   <xs:element name="getPDF" type="tns:getPDF"/>
+   <xs:element name="getPDFResponse" type="tns:getPDFResponse"/>
+   <xs:element name="getPublicationTypes" type="tns:getPublicationTypes"/>
+   <xs:element name="getPublicationTypesResponse" type="tns:getPublicationTypesResponse"/>
+   <xs:element name="getResultFields" type="tns:getResultFields"/>
+   <xs:element name="getResultFieldsResponse" type="tns:getResultFieldsResponse"/>
+   <xs:element name="getResumen" type="tns:getResumen"/>
+   <xs:element name="getResumenResponse" type="tns:getResumenResponse"/>
+   <xs:element name="getSearchFields" type="tns:getSearchFields"/>
+   <xs:element name="getSearchFieldsResponse" type="tns:getSearchFieldsResponse"/>
+   <xs:element name="getSearchReport" type="tns:getSearchReport"/>
+   <xs:element name="getSearchReportResponse" type="tns:getSearchReportResponse"/>
+   <xs:element name="getSummary" type="tns:getSummary"/>
+   <xs:element name="getSummaryResponse" type="tns:getSummaryResponse"/>
+   <xs:element name="getWrittenOpinion" type="tns:getWrittenOpinion"/>
+   <xs:element name="getWrittenOpinionResponse" type="tns:getWrittenOpinionResponse"/>
+   <xs:element name="getXMLInfo" type="tns:getXMLInfo"/>
+   <xs:element name="getXMLInfoResponse" type="tns:getXMLInfoResponse"/>
+   <xs:complexType name="getAllTypes">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:int" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getAllTypesResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesProperties" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="invenesProperties">
+      <xs:sequence>
+         <xs:element name="labelValueBean" type="tns:labelValueBean" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="labelValueBean">
+      <xs:sequence>
+         <xs:element name="label" type="xs:string" minOccurs="0"/>
+         <xs:element name="value" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="doSearch">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:int" minOccurs="0"/>
+         <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg3" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg4" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg5" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg6" type="xs:int" minOccurs="0"/>
+         <xs:element name="arg7" type="xs:int" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="doSearchResponse">
+      <xs:sequence>
+         <xs:element name="doSearchResponse" type="tns:searchResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="searchResult">
+      <xs:sequence>
+         <xs:element name="errorCod" type="xs:string" minOccurs="0"/>
+         <xs:element name="errorDesc" type="xs:string" minOccurs="0"/>
+         <xs:element name="references" type="tns:reference" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="totalResults" type="xs:int" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="reference">
+      <xs:sequence>
+         <xs:element name="fieldNames" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="fieldValues" type="xs:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+         <xs:element name="idReference" type="xs:string" minOccurs="0"/>
+         <xs:element name="location" type="xs:int"/>
+         <xs:element name="publicationNumber" type="xs:string" minOccurs="0"/>
+         <xs:element name="urlImage" type="xs:string" minOccurs="0"/>
+         <xs:element name="urlReference" type="xs:string" minOccurs="0"/>
+         <xs:element name="urlsPDF" type="xs:anyType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="SesionExpiradaException">
+      <xs:sequence>
+         <xs:element name="message" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getSummary">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg3" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getSummaryResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="invenesResult">
+      <xs:sequence>
+         <xs:element name="errorCode" type="xs:string" minOccurs="0"/>
+         <xs:element name="errorDesc" type="xs:string" minOccurs="0"/>
+         <xs:element name="result" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getPublicationTypes">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getPublicationTypesResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesProperties" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getImages">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getImagesResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getXMLInfo">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getXMLInfoResponse">
+      <xs:sequence>
+         <xs:element name="return" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getSearchFields">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:int" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getSearchFieldsResponse">
+      <xs:sequence>
+         <xs:element name="getSearchFieldsResponse" type="tns:invenesProperties" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getSearchReport">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getSearchReportResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getBases">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getBasesResponse">
+      <xs:sequence>
+         <xs:element name="getBasesResponse" type="tns:invenesProperties" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="doLogin">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="doLoginResponse">
+      <xs:sequence>
+         <xs:element name="doLoginResponse" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="InvenesWebException">
+      <xs:sequence>
+         <xs:element name="codigoError" type="xs:string" minOccurs="0"/>
+         <xs:element name="explicacion" type="xs:string" minOccurs="0"/>
+         <xs:element name="message" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getWrittenOpinion">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getWrittenOpinionResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getResumen">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getResumenResponse">
+      <xs:sequence>
+         <xs:element name="return" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getPDF">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getPDFResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getDesc">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getDescResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getResultFields">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:int" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getResultFieldsResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesProperties" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getClaims">
+      <xs:sequence>
+         <xs:element name="arg0" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg1" type="xs:string" minOccurs="0"/>
+         <xs:element name="arg2" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="getClaimsResponse">
+      <xs:sequence>
+         <xs:element name="return" type="tns:invenesResult" minOccurs="0"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

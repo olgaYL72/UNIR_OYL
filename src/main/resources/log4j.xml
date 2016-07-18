@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out"/>
+      	<param name="Threshold" value="DEBUG"/>
+      	<layout class="org.apache.log4j.PatternLayout">
+        	<param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss} %-5p [%c{1}] %m%n"/>
+      	</layout>
+   	</appender>
+   	
+   	
+	<appender name="invenesWEB.LOGFILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="/OLGA/UNIR/TFG/invenesWEB/log/invenesWEB.log"/>
+    	<param name="MaxFileSize" value="1024KB"/>
+    	<param name="MaxBackupIndex" value="10"/>
+    	<layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd-MM-yyyy HH:mm:ss} %p %c - %m%n"/>
+    	</layout>
+    </appender>
+	
+	<!-- Application Loggers -->
+	<logger name="es.invenesWEB.service">
+		<level value="debug" />
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="invenesWEB.LOGFILE"/>
+	</logger>
+	<logger name="es.invenesWEB.controller">
+		<level value="debug" />
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="invenesWEB.LOGFILE"/>
+	</logger>
+	
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="debug" />
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="invenesWEB.LOGFILE"/>
+	</logger>
+	
+	<logger name="org.springframework.beans">
+		<level value="debug" />
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="invenesWEB.LOGFILE"/>
+	</logger>
+	
+	<logger name="org.springframework.context">
+		<level value="debug" />
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="invenesWEB.LOGFILE"/>
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="debug" />
+		<appender-ref ref="CONSOLE"/>
+		<appender-ref ref="invenesWEB.LOGFILE"/>
+	</logger>
+	
+	  <!-- Definicion de logger para los frameworks  -->
+	<logger name="org.hibernate.SQL">
+        <level value="DEBUG"/>
+		<appender-ref ref="CONSOLE"/>		
+		<appender-ref ref="invenesWEB.LOGFILE"/>
+    </logger> 
+
+	<logger name="org.hibernate">
+        <level value="ERROR"/>
+        <appender-ref ref="CONSOLE"/>	
+		<appender-ref ref="invenesWEB.LOGFILE"/>        
+    </logger> 
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="info" />
+		<appender-ref ref="CONSOLE" />		
+		<appender-ref ref="invenesWEB.LOGFILE"/>        
+	</root>
+	
+</log4j:configuration>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<datasources>
+
+   <datasource jndi-name="java:/invenesWEBDS" pool-name="invenesWEBDS">
+    <connection-url>jdbc:mysql://localhost:3306/invenes</connection-url>
+    <driver>mysql</driver>
+    <security>
+      <user-name>TFG_invenes</user-name>
+      <password>INVENES</password>
+    </security> 
+    <validation>
+      <background-validation>true</background-validation>
+      <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker"></valid-connection-checker>
+      <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter"></exception-sorter>
+    </validation>
+  </datasource>
+
+</datasources>
+

@@ -1,0 +1,149 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+  <constant name="struts.objectFactory" value="spring" />
+  <!-- Autowire deshabilitado. Explicito en ficheros xml -->
+  <constant name="struts.objectFactory.spring.autoWire" value="no" />
+  
+  <constant name="struts.devMode" value="true" />
+   <constant name="struts.ui.theme" value="xhtml" /> 
+  <constant name="struts.ui.templateDir" value="template" />
+<!--  <constant name="struts.ui.theme" value="invenesWEB" />
+ <constant name="struts.ui.templateDir" value="template/invenesWEB" /> -->
+  <constant name="struts.i18n.encoding" value="UTF-8" />
+  <constant name="struts.custom.i18n.resources" value="messages" />
+  <constant name="struts.locale" value="es_ES" />
+  <constant name="struts.multipart.maxSize" value="999999999999999" />
+  <constant name="struts.action.excludePattern" value=".*/static/.*,.*/services/.*" />
+  
+  <!-- funcionamiento dos botones de submit en formulario -->
+  <constant name="struts.mapper.action.prefix.enabled" value="true" />
+
+   <!-- conjunto de acciones de la aplicacion -->
+  <package name="invenesWEB" extends="tiles-default, json-default , struts-default" namespace="/">
+  
+    <!-- Definición de tipos particulares de resultados -->
+    <result-types>
+      <result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" default="true" />     
+    </result-types>
+
+
+   <!-- Resultados globales para el paquete actual -->
+    <global-results>
+      <result name="error">/errorGenerico.jsp</result>      
+    </global-results>
+
+    <action name="Main" class="accesoInvenes">
+      <result  name="main">main</result>
+    </action>
+    
+      <action name="Error">
+      <result>paginaError</result>
+    </action>
+    
+    <action name="*Inicio" method="{1}" class="InicioAction">
+      <result name="input">tiles.Inicio</result>
+      <result name="cancelar">main</result>
+    </action>
+
+	<action name="*Busqueda" method="{1}" class="BusquedaAction">
+      <result name="inputSimple">tiles.BusquedaSimple</result>
+      <result name="inputAvanzada">tiles.BusquedaAvanzada</result>
+      <result name="cancelar">main</result>
+    </action>
+
+  <action name="*ConexionMysql" method="{1}" class="ConexionMysqlAction">
+      <result name="input">tiles.ComprobarMySql</result>
+      <result name="cancelar">main</result>
+    </action>
+    
+    <!--  acciones para cargar los valores de BBDD en campos de seleccion JSON -->
+     <action name="*JsonInvenesBBDDAction" method="{1}" class="JsonInvenesBBDDAction">
+      <result name="success" type="json">
+        <param name="excludeProperties"> InvenesBBDDService  </param>
+      </result>
+      <result name="listadoCampos" type="json">
+        <param name="contentType">text/html</param>
+        <param name="includeProperties">
+          lsInvenesCampos\[\d+\]\.idCampo,
+          lsInvenesCampos\[\d+\]\.descripcionCampo</param>
+      </result>
+    </action>
+
+    
+     <action name="*JsonCIPAction" method="{1}" class="jsonCIPAction">
+     <result name="listadoSecciones" type="json">
+        <param name="contentType">text/html</param>
+        <param name="includeProperties">
+          lsSecciones\[\d+\]\.idSeccion,
+          lsSecciones\[\d+\]\.descripcionSeccion</param>
+      </result>
+      <result name="listadoAreasSeccion" type="json">
+        <param name="contentType">text/html</param>
+        <param name="includeProperties">
+          lsAreas\[\d+\]\.idArea,
+          lsAreas\[\d+\]\.descripcionArea</param>
+      </result>
+      <result name="listadoClases" type="json">
+        <param name="contentType">text/html</param>
+        <param name="includeProperties">
+          lsClases\[\d+\]\.idClase,
+          lsClases\[\d+\]\.descripcionClase</param>
+      </result>
+       <result name="listadoSubclases" type="json">
+        <param name="contentType">text/html</param>
+        <param name="includeProperties">
+          lsSubclases\[\d+\]\.idSubclase,
+          lsSubclases\[\d+\]\.descripcionSubclase</param>
+      </result>
+    </action>
+    
+    <action name="*JsonInvenesAction" method="{1}" class="JsonInvenesAction">
+     <result name="busquedaCIP" type="json">
+        <param name="contentType">text/html</param>
+        <param name="includeProperties">
+          lsResultado\[\d+\]\.titulo,         
+          lsResultado\[\d+\]\.solicitante,
+          lsResultado\[\d+\]\.numPublicacion,          
+          lsResultado\[\d+\]\.referencia,
+          lsResultado\[\d+\]\.clasificacionInternacional,
+         lsResultado\[\d+\]\.urlReference,
+         records,
+          total</param>
+      </result>
+      <result name="busquedaCampos" type="json">
+        <param name="contentType">text/html</param>
+        <param name="includeProperties">
+          lsResultado\[\d+\]\.titulo,
+          lsResultado\[\d+\]\.solicitante,
+          lsResultado\[\d+\]\.numPublicacion,          
+          lsResultado\[\d+\]\.referencia,
+          lsResultado\[\d+\]\.clasificacionInternacional,
+         lsResultado\[\d+\]\.urlReference,
+         records,
+          total</param>
+      </result>
+      </action>
+    
+    <action name="*ListadoInformeAction" method="{1}" class="ListadoInformeAction">
+     <result name="input" type="redirectAction">
+        <param name="actionName">avanzadaBusqueda</param>
+        <param name="supressEmptyParameters">true</param>
+      </result>
+      
+     <result name="generarInforme" type="stream">
+        <param name="contentType">${contentType}</param>
+        <param name="inputName">InformeInputStream</param>
+        <param name="bufferSize">1024</param>
+        <param name="contentDisposition">attachment;filename=${fileName}</param>
+        <param name="allowCaching">false</param>
+      </result> 
+      
+      <result name="error">tiles.paginaError</result>
+    </action>
+    
+   
+  </package>
+
+</struts>
