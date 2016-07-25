@@ -99,6 +99,14 @@
 					return cellValue;
 				}
 				
+				function htmlFormatterNumPub(cellValue, opts, rowObject) {
+					if(cellValue!="")
+						return "ES"+cellValue;
+					else return cellValue;
+			
+					
+				}
+				
 				function exportar(formato) {					
 				
 					sidx = $("#gridtable").jqGrid('getGridParam', 'sortname');
@@ -235,7 +243,7 @@
 								
 							<sjg:gridColumn name="numPublicacion" index="numPublicacion"
 								align="center" title="%{getText('patente.numPublicacion')}"
-								width="35" sortable="true" />
+								width="35" sortable="true" formatter="htmlFormatterNumPub"/>
 								
 						 <sjg:gridColumn name="referencia" index="referencia"
 								align="center" title="%{getText('patente.referencia')}"

@@ -103,6 +103,7 @@ public class JsonInvenesAction implements Serializable {
 		log.debug("JsonInvenesAction.listado() ================================================>");
 
 		// recogemos los nuevos valores de la paginación.
+		if (this.page==0) this.setPage(1);
 		this.paginado.setPageSize(this.rows);
 		this.paginado.setPage(this.page);
 		this.paginado.setMax(this.records);
@@ -110,7 +111,9 @@ public class JsonInvenesAction implements Serializable {
 		this.paginado.setOrderType(this.sord);
 
 		String ordenA;
-		Integer inicio = this.page * this.rows;
+		Integer inicio;
+		if (this.page==1) inicio=1;
+		else inicio=this.page * this.rows;
 		if("".equals(this.sidx) || this.sidx=="asc")
 			ordenA="A";
 		 else
@@ -185,6 +188,7 @@ public class JsonInvenesAction implements Serializable {
 		public String busquedaCampos() throws Exception {
 			log.debug("JsonInvenesAction.listado() ================================================>");
 			// recogemos los nuevos valores de la paginación.
+			if (this.page==0) this.setPage(1);			
 			this.paginado.setPageSize(this.rows);
 			this.paginado.setPage(this.page);
 			this.paginado.setMax(this.records);
@@ -192,7 +196,10 @@ public class JsonInvenesAction implements Serializable {
 			this.paginado.setOrderType(this.sord);
 
 			String ordenA;
-			Integer inicio = this.page * this.rows;
+			Integer inicio;
+			if (this.page==1) inicio=1;
+			else inicio=this.page * this.rows;
+						
 			if("".equals(this.sidx) || this.sidx=="asc")
 				ordenA="A";
 			 else
@@ -244,9 +251,9 @@ public class JsonInvenesAction implements Serializable {
 						paginado.setListSize(res.getTotalResults());
 
 						List<Patente> lsResultado = new ArrayList<Patente>();
-
-						for (int i = 0; i < this.rows; i++) {
-							Reference reference = referencias.get(i);
+												
+						for (int i = 0; i <referencias.size(); i++) {
+							Reference reference = referencias.get(i);							
 							Patente patente = new Patente(reference);
 							lsResultado.add(patente);
 						}
