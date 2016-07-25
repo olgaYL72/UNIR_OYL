@@ -1,11 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-<%@taglib uri="/struts-tags" prefix="s" %>
-<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
-<%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
 
- 
  <!--  Copyright (C) 2016 Olga Yagüe López TFG UNIR Grado Informática -->
  
  <!-- 
@@ -22,6 +15,13 @@
    You should have received a copy of the GNU General Public License
     along with invenesWEB.  If not, see <http://www.gnu.org/licenses/>.
  --> 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ taglib prefix="sjg" uri="/struts-jquery-grid-tags"%>
+
  
 <script type="text/javascript">
 				function volver(){
